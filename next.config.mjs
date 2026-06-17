@@ -1,13 +1,14 @@
-const isProd = process.env.NODE_ENV === "production";
+// basePath solo para GitHub Pages (sitio en /<repo>/).
+// En Vercel u otros hosts en la raíz, GITHUB_PAGES no está seteado → sin basePath.
+const isGitHubPages = process.env.GITHUB_PAGES === "true";
 const repo = "notaria-saas";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
   images: { unoptimized: true },
-  // GitHub Pages sirve el sitio en /<repo>/
-  basePath: isProd ? `/${repo}` : "",
-  assetPrefix: isProd ? `/${repo}/` : "",
+  basePath: isGitHubPages ? `/${repo}` : "",
+  assetPrefix: isGitHubPages ? `/${repo}/` : "",
   trailingSlash: true,
 };
 
