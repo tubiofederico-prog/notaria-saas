@@ -1,22 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Bell, ChevronDown, Menu, Search, Check, Building2, LogOut, User, Settings } from "lucide-react";
 import { NOTARIAS, NOTIFICACIONES } from "@/lib/data";
+import { useCommandPalette } from "./CommandPalette";
 
 export function Header({ onMenu }: { onMenu: () => void }) {
-  const router = useRouter();
+  const openCmd = useCommandPalette();
   const [notifOpen, setNotifOpen] = useState(false);
   const [notariaOpen, setNotariaOpen] = useState(false);
   const [userOpen, setUserOpen] = useState(false);
   const [notaria, setNotaria] = useState(NOTARIAS[0]);
-  const [q, setQ] = useState("");
-
-  const onSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    router.push(q ? `/buscar?q=${encodeURIComponent(q)}` : "/buscar");
-  };
 
   const dotColor = (t: string) =>
     t === "warn" ? "bg-amber-400" : t === "ok" ? "bg-emerald-400" : "bg-brand-400";
@@ -27,19 +21,20 @@ export function Header({ onMenu }: { onMenu: () => void }) {
         <Menu size={20} />
       </button>
 
-      {/* Buscador global */}
-      <form onSubmit={onSearch} className="relative hidden flex-1 max-w-md sm:block">
-        <Search size={16} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-        <input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Buscar expedientes, clientes, DNI…"
-          className="input !py-2 pl-9 pr-16"
-        />
-        <kbd className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 rounded border border-white/10 bg-ink-800 px-1.5 py-0.5 text-[10px] text-slate-500">
-          ⌘K
-        </kbd>
-      </form>
+      {/* Buscador global → abre paleta de comandos */}
+      <button
+        onClick={openCmd}
+        className="group relative hidden w-full max-w-md flex-1 items-center gap-2 rounded-lg border border-white/10 bg-ink-900/60 px-3 py-2 text-left text-sm text-slate-500 transition hover:border-brand-500/40 hover:bg-ink-800 sm:flex"
+      >
+        <Search size={16} className="text-slate-500 group-hover:text-brand-400" />
+        <span className="flex-1">Buscar expedientes, clientes, DNI…</span>
+        <kbd className="rounded border border-white/10 bg-ink-800 px-1.5 py-0.5 text-[10px] text-slate-500">⌘K</kbd>
+      </button>
+
+      {/* Botón búsqueda móvil */}
+      <button onClick={openCmd} className="btn-ghost !px-2 sm:hidden">
+        <Search size={19} />
+      </button>
 
       <div className="flex flex-1 items-center justify-end gap-1.5 sm:flex-none">
         {/* Selector notaría */}
