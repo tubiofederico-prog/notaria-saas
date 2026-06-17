@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ESTADO_META, EstadoTramite } from "@/lib/data";
-import { ChevronRight, Inbox } from "lucide-react";
+import { ChevronRight, Inbox, Home } from "lucide-react";
 
 // ---------- Badge de estado de trámite ----------
 export function StatusBadge({ estado }: { estado: EstadoTramite }) {
@@ -41,19 +41,30 @@ export function PrioridadBadge({ prioridad }: { prioridad: string }) {
 // ---------- Breadcrumbs ----------
 export function Breadcrumbs({ items }: { items: { label: string; href?: string }[] }) {
   return (
-    <nav className="flex items-center gap-1.5 text-sm text-slate-400">
-      {items.map((it, i) => (
-        <span key={i} className="flex items-center gap-1.5">
-          {it.href ? (
-            <Link href={it.href} className="hover:text-slate-200 transition">
-              {it.label}
-            </Link>
-          ) : (
-            <span className="text-slate-200">{it.label}</span>
-          )}
-          {i < items.length - 1 && <ChevronRight size={14} className="text-slate-600" />}
-        </span>
-      ))}
+    <nav className="flex items-center gap-1 text-sm">
+      {items.map((it, i) => {
+        const isFirst = i === 0;
+        const isLast = i === items.length - 1;
+        return (
+          <span key={i} className="flex items-center gap-1">
+            {it.href && !isLast ? (
+              <Link
+                href={it.href}
+                className="flex items-center gap-1.5 rounded-md px-1.5 py-1 text-slate-400 transition hover:bg-white/[0.05] hover:text-slate-100"
+              >
+                {isFirst && <Home size={14} />}
+                {it.label}
+              </Link>
+            ) : (
+              <span className="flex items-center gap-1.5 px-1.5 py-1 font-medium text-slate-100">
+                {isFirst && <Home size={14} />}
+                {it.label}
+              </span>
+            )}
+            {!isLast && <ChevronRight size={14} className="text-slate-600" />}
+          </span>
+        );
+      })}
     </nav>
   );
 }

@@ -14,6 +14,7 @@ import {
   Copy,
 } from "lucide-react";
 import { Breadcrumbs, PageHeader, StatusBadge, EmptyState } from "@/components/ui/Primitives";
+import { BackButton } from "@/components/ui/BackButton";
 import { useToast } from "@/components/ui/Toast";
 import { getCliente, TRAMITES } from "@/lib/data";
 
@@ -40,7 +41,11 @@ export default function ClienteDetalleClient() {
 
   return (
     <div className="space-y-5">
-      <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Clientes", href: "/clientes" }, { label: c.nombre }]} />
+      <div className="flex items-center gap-2">
+        <BackButton fallback="/clientes" label="Clientes" />
+        <span className="text-slate-700">/</span>
+        <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Clientes", href: "/clientes" }, { label: c.nombre }]} />
+      </div>
       <PageHeader
         title={c.nombre}
         subtitle={c.tipo}

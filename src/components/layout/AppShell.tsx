@@ -4,11 +4,13 @@ import { useState } from "react";
 import { Sidebar } from "./Sidebar";
 import { Header } from "./Header";
 import { CommandPaletteProvider } from "./CommandPalette";
+import { TopProgress } from "./TopProgress";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <CommandPaletteProvider>
+      <TopProgress />
       <div className="app-bg min-h-screen">
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         <div className="lg:pl-64">

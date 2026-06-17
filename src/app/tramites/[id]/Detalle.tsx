@@ -16,6 +16,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { Breadcrumbs, PageHeader, StatusBadge, PrioridadBadge, Badge, Progress, EmptyState } from "@/components/ui/Primitives";
+import { BackButton } from "@/components/ui/BackButton";
 import { TramiteStepper, ActivityTimeline } from "@/components/ui/Timeline";
 import { Modal } from "@/components/ui/Modal";
 import { useToast } from "@/components/ui/Toast";
@@ -50,7 +51,11 @@ export default function TramiteDetalleClient() {
 
   return (
     <div className="space-y-5">
-      <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Trámites", href: "/tramites" }, { label: t.codigo }]} />
+      <div className="flex items-center gap-2">
+        <BackButton fallback="/tramites" label="Trámites" />
+        <span className="text-slate-700">/</span>
+        <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Trámites", href: "/tramites" }, { label: t.codigo }]} />
+      </div>
       <PageHeader
         title={t.cliente}
         subtitle={`${t.codigo} · ${t.tipo}`}

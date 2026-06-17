@@ -37,43 +37,57 @@ export function Sidebar({ open, onClose }: { open: boolean; onClose: () => void 
 
         {/* Nav */}
         <nav className="flex-1 overflow-y-auto px-3 py-4">
-          {NAV.map((group) => (
-            <div key={group.title} className="mb-5">
-              <p className="mb-1.5 px-3 text-[10px] font-semibold uppercase tracking-wider text-slate-600">
-                {group.title}
-              </p>
-              <ul className="space-y-0.5">
-                {group.items.map((item) => {
-                  const active = isActive(item.href);
-                  return (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        onClick={onClose}
-                        className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition ${
-                          active
-                            ? "bg-brand-600/15 text-white shadow-[inset_2px_0_0_0_var(--tw-shadow-color)] shadow-brand-400"
-                            : "text-slate-400 hover:bg-white/[0.04] hover:text-slate-200"
-                        }`}
-                      >
-                        <item.icon size={17} className={active ? "text-brand-300" : "text-slate-500 group-hover:text-slate-300"} />
-                        <span className="flex-1">{item.label}</span>
-                        {item.badge && (
-                          <span
-                            className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold ${
-                              active ? "bg-brand-500/30 text-brand-200" : "bg-ink-700 text-slate-400"
-                            }`}
-                          >
-                            {item.badge}
-                          </span>
-                        )}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ))}
+          {NAV.map((group) => {
+            const groupActive = group.items.some((i) => isActive(i.href));
+            return (
+              <div key={group.title} className="mb-5">
+                <p
+                  className={`mb-1.5 px-3 text-[10px] font-semibold uppercase tracking-wider transition-colors ${
+                    groupActive ? "text-brand-300" : "text-slate-600"
+                  }`}
+                >
+                  {group.title}
+                </p>
+                <ul className="space-y-0.5">
+                  {group.items.map((item) => {
+                    const active = isActive(item.href);
+                    return (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          onClick={onClose}
+                          aria-current={active ? "page" : undefined}
+                          className={`group relative flex items-center gap-3 rounded-lg py-2 pl-4 pr-3 text-sm font-medium transition ${
+                            active
+                              ? "bg-gradient-to-r from-brand-600/25 to-brand-600/5 text-white"
+                              : "text-slate-400 hover:bg-white/[0.04] hover:text-slate-100"
+                          }`}
+                        >
+                          {active && (
+                            <span className="absolute left-0 top-1/2 h-5 w-1 -translate-y-1/2 rounded-r-full bg-brand-400 shadow-[0_0_8px_rgba(110,141,255,0.8)]" />
+                          )}
+                          <item.icon
+                            size={17}
+                            className={active ? "text-brand-300" : "text-slate-500 group-hover:text-slate-300"}
+                          />
+                          <span className="flex-1">{item.label}</span>
+                          {item.badge && (
+                            <span
+                              className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold ${
+                                active ? "bg-brand-500/40 text-white" : "bg-ink-700 text-slate-400"
+                              }`}
+                            >
+                              {item.badge}
+                            </span>
+                          )}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            );
+          })}
         </nav>
 
         {/* Footer plan */}
