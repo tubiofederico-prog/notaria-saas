@@ -14,11 +14,11 @@ export function MetricCard({
   tone?: "brand" | "violet" | "cyan" | "emerald" | "amber";
 }) {
   const tones: Record<string, string> = {
-    brand: "text-brand-400 bg-brand-500/10",
-    violet: "text-iris-400 bg-iris-500/10",
-    cyan: "text-aqua-400 bg-aqua-500/10",
-    emerald: "text-emerald-400 bg-emerald-500/10",
-    amber: "text-amber-400 bg-amber-500/10",
+    brand: "text-brand-600 bg-brand-50",
+    violet: "text-indigo-600 bg-indigo-50",
+    cyan: "text-sky-600 bg-sky-50",
+    emerald: "text-emerald-600 bg-emerald-50",
+    amber: "text-amber-600 bg-amber-50",
   };
   const down = delta?.startsWith("-") && !delta.includes("-0");
   return (
@@ -30,7 +30,7 @@ export function MetricCard({
         {delta && (
           <span
             className={`flex items-center gap-0.5 text-xs font-medium ${
-              down ? "text-rose-400" : "text-emerald-400"
+              down ? "text-rose-600" : "text-emerald-600"
             }`}
           >
             {down ? <ArrowDownRight size={13} /> : <ArrowUpRight size={13} />}
@@ -38,8 +38,8 @@ export function MetricCard({
           </span>
         )}
       </div>
-      <p className="mt-4 text-2xl font-semibold tracking-tight text-white">{value}</p>
-      <p className="mt-1 text-sm text-slate-400">{label}</p>
+      <p className="mt-4 text-2xl font-semibold tracking-tight text-slate-900">{value}</p>
+      <p className="mt-1 text-sm text-slate-600">{label}</p>
     </div>
   );
 }

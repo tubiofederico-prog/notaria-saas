@@ -35,7 +35,7 @@ export default function TramitesPage() {
       header: "Expediente",
       render: (t) => (
         <div>
-          <p className="font-mono text-xs text-brand-300">{t.codigo}</p>
+          <p className="font-mono text-xs text-brand-700">{t.codigo}</p>
           <p className="text-[11px] text-slate-500">{t.creado}</p>
         </div>
       ),
@@ -45,13 +45,13 @@ export default function TramitesPage() {
       header: "Cliente",
       render: (t) => (
         <div>
-          <p className="font-medium text-slate-200">{t.cliente}</p>
+          <p className="font-medium text-slate-800">{t.cliente}</p>
           {t.contraparte && <p className="text-[11px] text-slate-500">↔ {t.contraparte}</p>}
         </div>
       ),
     },
-    { key: "tipo", header: "Tipo", render: (t) => <span className="text-slate-300">{t.tipo}</span> },
-    { key: "responsable", header: "Responsable", render: (t) => <span className="text-slate-400">{t.responsable}</span> },
+    { key: "tipo", header: "Tipo", render: (t) => <span className="text-slate-700">{t.tipo}</span> },
+    { key: "responsable", header: "Responsable", render: (t) => <span className="text-slate-600">{t.responsable}</span> },
     { key: "prioridad", header: "Prioridad", render: (t) => <PrioridadBadge prioridad={t.prioridad} /> },
     { key: "estado", header: "Estado", render: (t) => <StatusBadge estado={t.estado} /> },
   ];

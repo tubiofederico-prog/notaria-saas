@@ -25,13 +25,13 @@ export const ESTADO_META: Record<
   EstadoTramite,
   { color: string; dot: string; step: number }
 > = {
-  Recibido: { color: "bg-slate-500/15 text-slate-300 border-slate-400/20", dot: "bg-slate-400", step: 1 },
-  "En revisión": { color: "bg-brand-500/15 text-brand-300 border-brand-400/25", dot: "bg-brand-400", step: 2 },
-  "Pendiente de datos": { color: "bg-amber-500/15 text-amber-300 border-amber-400/25", dot: "bg-amber-400", step: 3 },
-  "Contrato generado": { color: "bg-iris-500/15 text-iris-400 border-iris-400/25", dot: "bg-iris-400", step: 4 },
-  "Pendiente de firma": { color: "bg-aqua-500/15 text-aqua-400 border-aqua-400/25", dot: "bg-aqua-400", step: 5 },
-  "Listo para retiro": { color: "bg-emerald-500/15 text-emerald-300 border-emerald-400/25", dot: "bg-emerald-400", step: 6 },
-  Finalizado: { color: "bg-emerald-600/20 text-emerald-300 border-emerald-500/30", dot: "bg-emerald-500", step: 7 },
+  Recibido: { color: "bg-slate-100 text-slate-700 border-slate-200", dot: "bg-slate-400", step: 1 },
+  "En revisión": { color: "bg-brand-50 text-brand-700 border-brand-200", dot: "bg-brand-500", step: 2 },
+  "Pendiente de datos": { color: "bg-amber-50 text-amber-700 border-amber-200", dot: "bg-amber-500", step: 3 },
+  "Contrato generado": { color: "bg-indigo-50 text-indigo-700 border-indigo-200", dot: "bg-indigo-500", step: 4 },
+  "Pendiente de firma": { color: "bg-sky-50 text-sky-700 border-sky-200", dot: "bg-sky-500", step: 5 },
+  "Listo para retiro": { color: "bg-emerald-50 text-emerald-700 border-emerald-200", dot: "bg-emerald-500", step: 6 },
+  Finalizado: { color: "bg-emerald-100 text-emerald-800 border-emerald-300", dot: "bg-emerald-600", step: 7 },
 };
 
 export type TipoTramite =

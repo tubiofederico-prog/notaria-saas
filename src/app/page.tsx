@@ -58,13 +58,13 @@ export default function Dashboard() {
         {quickActions.map((a) => (
           <button key={a.label} onClick={a.onClick} className="card card-hover group flex items-center gap-3 p-4 text-left">
             <div className={`flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br ${a.tone} shadow-glow`}>
-              <a.icon size={20} className="text-white" />
+              <a.icon size={20} className="text-slate-900" />
             </div>
             <div className="flex-1">
-              <p className="text-sm font-medium text-white">{a.label}</p>
+              <p className="text-sm font-medium text-slate-900">{a.label}</p>
               <p className="text-xs text-slate-500">Acción rápida</p>
             </div>
-            <ArrowRight size={16} className="text-slate-600 transition group-hover:translate-x-0.5 group-hover:text-brand-400" />
+            <ArrowRight size={16} className="text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-brand-600" />
           </button>
         ))}
       </div>
@@ -73,18 +73,18 @@ export default function Dashboard() {
         <div className="card p-5 lg:col-span-3">
           <div className="mb-4 flex items-center justify-between">
             <div>
-              <h3 className="text-sm font-semibold text-white">Evolución de trámites</h3>
+              <h3 className="text-sm font-semibold text-slate-900">Evolución de trámites</h3>
               <p className="text-xs text-slate-500">Trámites recibidos vs. contratos generados</p>
             </div>
             <div className="flex gap-3 text-xs">
-              <span className="flex items-center gap-1.5 text-slate-400"><span className="h-2 w-2 rounded-full bg-brand-500" />Trámites</span>
-              <span className="flex items-center gap-1.5 text-slate-400"><span className="h-2 w-2 rounded-full bg-iris-500" />Contratos</span>
+              <span className="flex items-center gap-1.5 text-slate-600"><span className="h-2 w-2 rounded-full bg-brand-500" />Trámites</span>
+              <span className="flex items-center gap-1.5 text-slate-600"><span className="h-2 w-2 rounded-full bg-iris-500" />Contratos</span>
             </div>
           </div>
           <TramitesAreaChart data={TRAMITES_POR_MES} />
         </div>
         <div className="card p-5 lg:col-span-2">
-          <h3 className="mb-1 text-sm font-semibold text-white">Trámites por estado</h3>
+          <h3 className="mb-1 text-sm font-semibold text-slate-900">Trámites por estado</h3>
           <p className="mb-4 text-xs text-slate-500">Distribución actual del pipeline</p>
           <EstadoBarChart data={TRAMITES_POR_ESTADO} />
         </div>
@@ -92,15 +92,15 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <div className="card lg:col-span-2">
-          <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-4">
-            <h3 className="text-sm font-semibold text-white">Últimos expedientes</h3>
-            <Link href="/tramites" className="text-xs font-medium text-brand-400 hover:text-brand-300">Ver todos →</Link>
+          <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+            <h3 className="text-sm font-semibold text-slate-900">Últimos expedientes</h3>
+            <Link href="/tramites" className="text-xs font-medium text-brand-600 hover:text-brand-700">Ver todos →</Link>
           </div>
-          <div className="divide-y divide-white/[0.04]">
+          <div className="divide-y divide-slate-100">
             {TRAMITES.slice(0, 6).map((t) => (
-              <Link key={t.id} href={`/tramites/${t.id}`} className="flex items-center gap-3 px-5 py-3.5 transition hover:bg-white/[0.03]">
+              <Link key={t.id} href={`/tramites/${t.id}`} className="flex items-center gap-3 px-5 py-3.5 transition hover:bg-slate-50">
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-slate-200">{t.cliente}</p>
+                  <p className="truncate text-sm font-medium text-slate-800">{t.cliente}</p>
                   <p className="truncate text-xs text-slate-500">{t.codigo} · {t.tipo}</p>
                 </div>
                 <PrioridadBadge prioridad={t.prioridad} />
@@ -111,26 +111,26 @@ export default function Dashboard() {
         </div>
 
         <div className="card">
-          <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-4">
-            <h3 className="flex items-center gap-2 text-sm font-semibold text-white">
-              <AlertTriangle size={15} className="text-amber-400" /> Documentos incompletos
+          <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+            <h3 className="flex items-center gap-2 text-sm font-semibold text-slate-900">
+              <AlertTriangle size={15} className="text-amber-600" /> Documentos incompletos
             </h3>
-            <span className="chip border border-amber-400/25 bg-amber-500/15 text-amber-300">{ALERTAS_DOCS.length}</span>
+            <span className="chip border border-amber-400/25 bg-amber-500/15 text-amber-600">{ALERTAS_DOCS.length}</span>
           </div>
           <div className="space-y-2 p-3">
             {ALERTAS_DOCS.map((a) => (
               <Link
                 key={a.id}
                 href="/motor-ia"
-                className={`block rounded-lg border p-3 transition hover:bg-white/[0.03] ${
+                className={`block rounded-lg border p-3 transition hover:bg-slate-50 ${
                   a.nivel === "alto" ? "border-rose-500/20 bg-rose-500/5" : "border-amber-500/20 bg-amber-500/5"
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <p className="text-xs font-semibold text-slate-200">{a.expediente}</p>
+                  <p className="text-xs font-semibold text-slate-800">{a.expediente}</p>
                   <span className={`h-1.5 w-1.5 rounded-full ${a.nivel === "alto" ? "bg-rose-400" : "bg-amber-400"}`} />
                 </div>
-                <p className="mt-1 text-xs text-slate-400">{a.motivo}</p>
+                <p className="mt-1 text-xs text-slate-600">{a.motivo}</p>
               </Link>
             ))}
           </div>
@@ -154,9 +154,9 @@ export default function Dashboard() {
           </>
         }
       >
-        <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-white/15 bg-ink-900/50 px-6 py-10 text-center">
-          <Upload size={28} className="mb-3 text-brand-400" />
-          <p className="text-sm font-medium text-slate-200">Arrastra documentos aquí</p>
+        <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-white/50 px-6 py-10 text-center">
+          <Upload size={28} className="mb-3 text-brand-600" />
+          <p className="text-sm font-medium text-slate-800">Arrastra documentos aquí</p>
           <p className="mt-1 text-xs text-slate-500">DNI, contratos, escrituras, títulos, poderes · PDF, JPG, PNG</p>
           <button className="btn-outline mt-4">Seleccionar archivos</button>
         </div>

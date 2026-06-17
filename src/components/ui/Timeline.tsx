@@ -18,13 +18,13 @@ export function TramiteStepper({ estado }: { estado: EstadoTramite }) {
                   done
                     ? "border-brand-500 bg-brand-600 text-white"
                     : active
-                    ? "border-brand-400 bg-brand-500/20 text-brand-300 shadow-glow"
-                    : "border-white/10 bg-ink-800 text-slate-500"
+                    ? "border-brand-400 bg-brand-500/20 text-brand-700 shadow-glow"
+                    : "border-slate-200 bg-slate-100 text-slate-500"
                 }`}
               >
                 {done ? <Check size={14} /> : step}
               </div>
-              <span className={`mt-2 max-w-[72px] text-center text-[10px] leading-tight ${active ? "text-brand-300" : "text-slate-500"}`}>
+              <span className={`mt-2 max-w-[72px] text-center text-[10px] leading-tight ${active ? "text-brand-700" : "text-slate-500"}`}>
                 {e}
               </span>
             </div>
@@ -45,15 +45,15 @@ export function ActivityTimeline({
   items: { id: string; usuario: string; accion: string; detalle: string; fecha: string }[];
 }) {
   return (
-    <ol className="relative space-y-5 border-l border-white/[0.08] pl-5">
+    <ol className="relative space-y-5 border-l border-slate-200 pl-5">
       {items.map((it) => (
         <li key={it.id} className="relative">
-          <span className="absolute -left-[26px] top-1 h-2.5 w-2.5 rounded-full border-2 border-ink-850 bg-brand-500" />
+          <span className="absolute -left-[26px] top-1 h-2.5 w-2.5 rounded-full border-2 border-white bg-brand-500" />
           <div className="flex items-center justify-between gap-2">
-            <p className="text-sm font-medium text-slate-200">{it.accion}</p>
+            <p className="text-sm font-medium text-slate-800">{it.accion}</p>
             <span className="shrink-0 text-xs text-slate-500">{it.fecha}</span>
           </div>
-          <p className="text-sm text-slate-400">{it.detalle}</p>
+          <p className="text-sm text-slate-600">{it.detalle}</p>
           <p className="mt-0.5 text-xs text-slate-500">por {it.usuario}</p>
         </li>
       ))}

@@ -88,7 +88,7 @@ export default function MotorIA() {
   const [sel, setSel] = useState<DocAnalisis>(DOCS[0]);
   const [revisionModal, setRevisionModal] = useState(false);
 
-  const scoreTone = (s: number) => (s >= 85 ? "text-emerald-400" : s >= 60 ? "text-amber-400" : "text-rose-400");
+  const scoreTone = (s: number) => (s >= 85 ? "text-emerald-600" : s >= 60 ? "text-amber-600" : "text-rose-600");
   const totalAlertas = DOCS.reduce((a, d) => a + d.alertas.length, 0);
 
   return (
@@ -103,26 +103,26 @@ export default function MotorIA() {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {/* Lista de docs analizados */}
         <div className="card overflow-hidden">
-          <div className="border-b border-white/[0.06] px-4 py-3">
-            <h3 className="text-sm font-semibold text-white">Documentos analizados</h3>
+          <div className="border-b border-slate-200 px-4 py-3">
+            <h3 className="text-sm font-semibold text-slate-900">Documentos analizados</h3>
           </div>
-          <div className="divide-y divide-white/[0.04]">
+          <div className="divide-y divide-slate-100">
             {DOCS.map((d) => (
               <button
                 key={d.id}
                 onClick={() => setSel(d)}
-                className={`flex w-full items-center gap-3 px-4 py-3.5 text-left transition ${sel.id === d.id ? "bg-brand-500/10" : "hover:bg-white/[0.03]"}`}
+                className={`flex w-full items-center gap-3 px-4 py-3.5 text-left transition ${sel.id === d.id ? "bg-brand-500/10" : "hover:bg-slate-50"}`}
               >
-                <div className={`flex h-9 w-9 items-center justify-center rounded-lg ${d.score >= 85 ? "bg-emerald-500/15 text-emerald-400" : d.score >= 60 ? "bg-amber-500/15 text-amber-400" : "bg-rose-500/15 text-rose-400"}`}>
+                <div className={`flex h-9 w-9 items-center justify-center rounded-lg ${d.score >= 85 ? "bg-emerald-500/15 text-emerald-600" : d.score >= 60 ? "bg-amber-500/15 text-amber-600" : "bg-rose-500/15 text-rose-600"}`}>
                   <BrainCircuit size={16} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-slate-200">{d.doc}</p>
+                  <p className="truncate text-sm font-medium text-slate-800">{d.doc}</p>
                   <p className="truncate text-[11px] text-slate-500">{d.expediente}</p>
                 </div>
                 <div className="text-right">
                   <p className={`text-sm font-semibold ${scoreTone(d.score)}`}>{d.score}%</p>
-                  {d.alertas.length > 0 && <p className="text-[10px] text-rose-400">{d.alertas.length} alerta(s)</p>}
+                  {d.alertas.length > 0 && <p className="text-[10px] text-rose-600">{d.alertas.length} alerta(s)</p>}
                 </div>
               </button>
             ))}
@@ -134,8 +134,8 @@ export default function MotorIA() {
           <div className="card p-5">
             <div className="flex items-start justify-between">
               <div>
-                <h3 className="text-base font-semibold text-white">{sel.doc}</h3>
-                <p className="text-sm text-slate-400">{sel.expediente} · {sel.tipo}</p>
+                <h3 className="text-base font-semibold text-slate-900">{sel.doc}</h3>
+                <p className="text-sm text-slate-600">{sel.expediente} · {sel.tipo}</p>
               </div>
               <div className="text-right">
                 <p className={`text-3xl font-bold ${scoreTone(sel.score)}`}>{sel.score}%</p>
@@ -147,12 +147,12 @@ export default function MotorIA() {
           {/* Alertas */}
           {sel.alertas.length > 0 ? (
             <div className="card p-5">
-              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-white"><AlertTriangle size={15} className="text-amber-400" /> Alertas detectadas</h4>
+              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-slate-900"><AlertTriangle size={15} className="text-amber-600" /> Alertas detectadas</h4>
               <div className="space-y-2">
                 {sel.alertas.map((a, i) => (
                   <div key={i} className={`flex items-center gap-3 rounded-lg border p-3 ${a.nivel === "alto" ? "border-rose-500/20 bg-rose-500/5" : "border-amber-500/20 bg-amber-500/5"}`}>
-                    <AlertTriangle size={15} className={a.nivel === "alto" ? "text-rose-400" : "text-amber-400"} />
-                    <span className="flex-1 text-sm text-slate-200">{a.tipo}</span>
+                    <AlertTriangle size={15} className={a.nivel === "alto" ? "text-rose-600" : "text-amber-600"} />
+                    <span className="flex-1 text-sm text-slate-800">{a.tipo}</span>
                     <Badge tone={NIVEL_TONE[a.nivel]}>{a.nivel}</Badge>
                   </div>
                 ))}
@@ -160,19 +160,19 @@ export default function MotorIA() {
             </div>
           ) : (
             <div className="card flex items-center gap-3 p-5">
-              <CheckCircle2 size={20} className="text-emerald-400" />
-              <p className="text-sm text-slate-200">Sin alertas. El documento pasó todas las validaciones automáticas.</p>
+              <CheckCircle2 size={20} className="text-emerald-600" />
+              <p className="text-sm text-slate-800">Sin alertas. El documento pasó todas las validaciones automáticas.</p>
             </div>
           )}
 
           {/* Comparación */}
           <div className="card overflow-hidden">
-            <div className="border-b border-white/[0.06] px-5 py-3.5">
-              <h4 className="text-sm font-semibold text-white">Comparación: IA vs. datos ingresados</h4>
+            <div className="border-b border-slate-200 px-5 py-3.5">
+              <h4 className="text-sm font-semibold text-slate-900">Comparación: IA vs. datos ingresados</h4>
             </div>
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-white/[0.06] bg-ink-900/40 text-xs uppercase tracking-wide text-slate-500">
+                <tr className="border-b border-slate-200 bg-white/40 text-xs uppercase tracking-wide text-slate-500">
                   <th className="px-5 py-2.5 text-left font-medium">Campo</th>
                   <th className="px-5 py-2.5 text-left font-medium">Extraído por IA</th>
                   <th className="px-5 py-2.5 text-left font-medium">Ingresado manual</th>
@@ -181,12 +181,12 @@ export default function MotorIA() {
               </thead>
               <tbody>
                 {sel.comparacion.map((c, i) => (
-                  <tr key={i} className="border-b border-white/[0.04] last:border-0">
-                    <td className="px-5 py-3 text-slate-400">{c.campo}</td>
-                    <td className="px-5 py-3 text-slate-200">{c.extraido}</td>
-                    <td className="px-5 py-3 text-slate-200">{c.manual}</td>
+                  <tr key={i} className="border-b border-slate-100 last:border-0">
+                    <td className="px-5 py-3 text-slate-600">{c.campo}</td>
+                    <td className="px-5 py-3 text-slate-800">{c.extraido}</td>
+                    <td className="px-5 py-3 text-slate-800">{c.manual}</td>
                     <td className="px-5 py-3 text-center">
-                      {c.match ? <CheckCircle2 size={16} className="mx-auto text-emerald-400" /> : <XCircle size={16} className="mx-auto text-rose-400" />}
+                      {c.match ? <CheckCircle2 size={16} className="mx-auto text-emerald-600" /> : <XCircle size={16} className="mx-auto text-rose-600" />}
                     </td>
                   </tr>
                 ))}

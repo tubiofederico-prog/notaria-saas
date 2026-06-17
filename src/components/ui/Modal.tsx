@@ -31,19 +31,19 @@ export function Modal({
 
   return (
     <div className="fixed inset-0 z-[90] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-ink-950/70 backdrop-blur-sm animate-fade-in" onClick={onClose} />
+      <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm animate-fade-in" onClick={onClose} />
       <div className={`relative w-full ${w} animate-fade-in card max-h-[88vh] overflow-hidden flex flex-col`}>
-        <div className="flex items-start justify-between border-b border-white/[0.06] px-5 py-4">
+        <div className="flex items-start justify-between border-b border-slate-200 px-5 py-4">
           <div>
-            <h3 className="text-base font-semibold text-white">{title}</h3>
-            {subtitle && <p className="mt-0.5 text-sm text-slate-400">{subtitle}</p>}
+            <h3 className="text-base font-semibold text-slate-900">{title}</h3>
+            {subtitle && <p className="mt-0.5 text-sm text-slate-600">{subtitle}</p>}
           </div>
           <button onClick={onClose} className="btn-ghost -mr-2 -mt-1 !px-2">
             <X size={18} />
           </button>
         </div>
         <div className="flex-1 overflow-y-auto px-5 py-4">{children}</div>
-        {footer && <div className="flex justify-end gap-2 border-t border-white/[0.06] px-5 py-3.5">{footer}</div>}
+        {footer && <div className="flex justify-end gap-2 border-t border-slate-200 px-5 py-3.5">{footer}</div>}
       </div>
     </div>
   );

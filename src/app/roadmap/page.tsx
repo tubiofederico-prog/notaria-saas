@@ -33,8 +33,8 @@ export default function RoadmapPage() {
       <div className="card flex flex-col items-start gap-4 overflow-hidden bg-gradient-to-br from-brand-600/15 to-iris-600/10 p-6 sm:flex-row sm:items-center">
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-iris-600 shadow-glow"><Sparkles size={24} className="text-white" /></div>
         <div className="flex-1">
-          <h3 className="text-base font-semibold text-white">El futuro de la notaría digital</h3>
-          <p className="mt-1 text-sm text-slate-300">Estamos construyendo la suite notarial más completa del Perú. Vota por las funcionalidades que más te interesan.</p>
+          <h3 className="text-base font-semibold text-slate-900">El futuro de la notaría digital</h3>
+          <p className="mt-1 text-sm text-slate-700">Estamos construyendo la suite notarial más completa del Perú. Vota por las funcionalidades que más te interesan.</p>
         </div>
         <button className="btn-primary" onClick={() => toast("¡Gracias! Registramos tu interés.", "success")}>Sugerir funcionalidad</button>
       </div>
@@ -43,14 +43,14 @@ export default function RoadmapPage() {
         {MODULOS.map((m) => (
           <div key={m.titulo} className="card card-hover flex flex-col p-5">
             <div className="mb-3 flex items-start justify-between">
-              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-ink-800 text-brand-400"><m.icon size={21} /></div>
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-100 text-brand-600"><m.icon size={21} /></div>
               <Badge tone={m.tone}>{m.estado}</Badge>
             </div>
-            <h3 className="text-sm font-semibold text-white">{m.titulo}</h3>
-            <p className="mt-1.5 flex-1 text-sm text-slate-400">{m.desc}</p>
-            <div className="mt-4 flex items-center justify-between border-t border-white/[0.06] pt-3">
+            <h3 className="text-sm font-semibold text-slate-900">{m.titulo}</h3>
+            <p className="mt-1.5 flex-1 text-sm text-slate-600">{m.desc}</p>
+            <div className="mt-4 flex items-center justify-between border-t border-slate-200 pt-3">
               <span className="text-xs text-slate-500">Estimado · {m.q}</span>
-              <button onClick={() => toast("Te avisaremos cuando esté disponible", "info")} className="text-xs font-medium text-brand-400 hover:text-brand-300">Notificarme →</button>
+              <button onClick={() => toast("Te avisaremos cuando esté disponible", "info")} className="text-xs font-medium text-brand-600 hover:text-brand-700">Notificarme →</button>
             </div>
           </div>
         ))}

@@ -24,11 +24,11 @@ export function DataTable<T extends { id: string }>({
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-white/[0.06] bg-ink-900/50">
+            <tr className="border-b border-slate-200 bg-white/50">
               {columns.map((c) => (
                 <th
                   key={c.key}
-                  className={`px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-slate-400 ${c.className ?? ""}`}
+                  className={`px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-slate-600 ${c.className ?? ""}`}
                 >
                   {c.header}
                 </th>
@@ -40,12 +40,12 @@ export function DataTable<T extends { id: string }>({
               <tr
                 key={row.id}
                 onClick={() => onRowClick?.(row)}
-                className={`border-b border-white/[0.04] transition-colors last:border-0 ${
-                  onRowClick ? "cursor-pointer hover:bg-white/[0.03]" : ""
+                className={`border-b border-slate-100 transition-colors last:border-0 ${
+                  onRowClick ? "cursor-pointer hover:bg-slate-50" : ""
                 }`}
               >
                 {columns.map((c) => (
-                  <td key={c.key} className={`px-4 py-3.5 text-slate-300 ${c.className ?? ""}`}>
+                  <td key={c.key} className={`px-4 py-3.5 text-slate-700 ${c.className ?? ""}`}>
                     {c.render ? c.render(row) : (row as Record<string, React.ReactNode>)[c.key]}
                   </td>
                 ))}

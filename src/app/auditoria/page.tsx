@@ -37,10 +37,10 @@ export default function AuditoriaPage() {
 
       {/* Banner cumplimiento */}
       <div className="card flex items-center gap-4 border-emerald-500/20 bg-emerald-500/5 p-5">
-        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-400"><ShieldCheck size={22} /></div>
+        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-600"><ShieldCheck size={22} /></div>
         <div className="flex-1">
-          <p className="text-sm font-semibold text-white">Sistema en cumplimiento</p>
-          <p className="text-xs text-slate-400">Trazabilidad completa · Cifrado AES-256 · Conforme a la Ley del Notariado y protección de datos personales.</p>
+          <p className="text-sm font-semibold text-slate-900">Sistema en cumplimiento</p>
+          <p className="text-xs text-slate-600">Trazabilidad completa · Cifrado AES-256 · Conforme a la Ley del Notariado y protección de datos personales.</p>
         </div>
         <Badge tone="emerald"><Lock size={11} /> Registro sellado</Badge>
       </div>
@@ -61,7 +61,7 @@ export default function AuditoriaPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-white/[0.06] bg-ink-900/40 text-xs uppercase tracking-wide text-slate-400">
+              <tr className="border-b border-slate-200 bg-white/40 text-xs uppercase tracking-wide text-slate-600">
                 <th className="px-4 py-3 text-left font-medium">Fecha / hora</th>
                 <th className="px-4 py-3 text-left font-medium">Usuario</th>
                 <th className="px-4 py-3 text-left font-medium">Acción</th>
@@ -72,18 +72,18 @@ export default function AuditoriaPage() {
             </thead>
             <tbody>
               {rows.map((a) => (
-                <tr key={a.id} className="border-b border-white/[0.04] last:border-0 hover:bg-white/[0.02]">
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-400">{a.fecha}</td>
+                <tr key={a.id} className="border-b border-slate-100 last:border-0 hover:bg-slate-50">
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{a.fecha}</td>
                   <td className="px-4 py-3">
-                    <span className={a.usuario === "Motor IA" || a.usuario === "Sistema" ? "text-iris-400" : "text-slate-200"}>{a.usuario}</span>
+                    <span className={a.usuario === "Motor IA" || a.usuario === "Sistema" ? "text-iris-600" : "text-slate-800"}>{a.usuario}</span>
                   </td>
                   <td className="px-4 py-3"><Badge tone="blue">{a.accion}</Badge></td>
-                  <td className="px-4 py-3 text-slate-300">{a.documento}</td>
+                  <td className="px-4 py-3 text-slate-700">{a.documento}</td>
                   <td className="px-4 py-3">
-                    <span className="flex items-center gap-1.5 text-xs text-slate-400">
-                      <span className="rounded bg-ink-800 px-1.5 py-0.5">{a.estadoAnterior}</span>
-                      <ArrowRight size={12} className="text-slate-600" />
-                      <span className="rounded bg-brand-500/15 px-1.5 py-0.5 text-brand-300">{a.estadoNuevo}</span>
+                    <span className="flex items-center gap-1.5 text-xs text-slate-600">
+                      <span className="rounded bg-slate-100 px-1.5 py-0.5">{a.estadoAnterior}</span>
+                      <ArrowRight size={12} className="text-slate-400" />
+                      <span className="rounded bg-brand-500/15 px-1.5 py-0.5 text-brand-700">{a.estadoNuevo}</span>
                     </span>
                   </td>
                   <td className="px-4 py-3 font-mono text-[11px] text-slate-500">{a.ip}</td>
@@ -93,7 +93,7 @@ export default function AuditoriaPage() {
           </table>
         </div>
       </div>
-      <p className="text-center text-xs text-slate-600">Mostrando {rows.length} de {AUDITORIA.length} eventos · Los registros de auditoría no pueden ser editados ni eliminados.</p>
+      <p className="text-center text-xs text-slate-400">Mostrando {rows.length} de {AUDITORIA.length} eventos · Los registros de auditoría no pueden ser editados ni eliminados.</p>
     </div>
   );
 }

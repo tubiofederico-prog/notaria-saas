@@ -9,29 +9,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: {
-          950: "#070a12",
-          900: "#0b0f1a",
-          850: "#0f1424",
-          800: "#141a2e",
-          750: "#1a2138",
-          700: "#222a44",
-          600: "#2d375a",
-        },
+        // Marca — azul
         brand: {
-          50: "#eef3ff",
-          100: "#dbe5ff",
-          300: "#9db4ff",
-          400: "#6e8dff",
-          500: "#4f6fff",
-          600: "#3a55f0",
-          700: "#2c40c4",
-          800: "#26379a",
+          50: "#eff6ff",
+          100: "#dbeafe",
+          200: "#bfdbfe",
+          300: "#93c5fd",
+          400: "#60a5fa",
+          500: "#3b82f6",
+          600: "#2563eb",
+          700: "#1d4ed8",
+          800: "#1e40af",
+        },
+        // Acento — celeste
+        sky: {
+          50: "#f0f9ff",
+          100: "#e0f2fe",
+          200: "#bae6fd",
+          300: "#7dd3fc",
+          400: "#38bdf8",
+          500: "#0ea5e9",
+          600: "#0284c7",
         },
         iris: {
-          400: "#a78bfa",
-          500: "#8b5cf6",
-          600: "#7c3aed",
+          400: "#818cf8",
+          500: "#6366f1",
+          600: "#4f46e5",
         },
         aqua: {
           400: "#22d3ee",
@@ -40,12 +43,21 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
+        sans: ["Arial", "Helvetica", "'Helvetica Neue'", "sans-serif"],
+        mono: ["'SF Mono'", "Menlo", "Consolas", "monospace"],
+      },
+      borderRadius: {
+        DEFAULT: "0.6rem",
+        md: "0.7rem",
+        lg: "0.9rem",
+        xl: "1.15rem",
+        "2xl": "1.4rem",
+        "3xl": "1.75rem",
       },
       boxShadow: {
-        glow: "0 0 0 1px rgba(79,111,255,0.25), 0 8px 30px -8px rgba(79,111,255,0.35)",
-        card: "0 1px 0 0 rgba(255,255,255,0.04) inset, 0 8px 24px -12px rgba(0,0,0,0.6)",
+        glow: "0 6px 20px -6px rgba(37,99,235,0.45)",
+        card: "0 1px 2px 0 rgba(15,23,42,0.04), 0 6px 20px -8px rgba(15,23,42,0.10)",
+        soft: "0 2px 8px -2px rgba(15,23,42,0.08)",
       },
       keyframes: {
         "fade-in": {

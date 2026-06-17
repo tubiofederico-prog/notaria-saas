@@ -167,33 +167,33 @@ export function CommandPaletteProvider({ children }: { children: React.ReactNode
       {children}
       {open && (
         <div className="fixed inset-0 z-[95] flex items-start justify-center p-4 pt-[12vh]">
-          <div className="absolute inset-0 bg-ink-950/70 backdrop-blur-sm animate-fade-in" onClick={() => setOpen(false)} />
-          <div className="relative w-full max-w-xl animate-fade-in overflow-hidden rounded-xl border border-white/10 bg-ink-850/95 shadow-card backdrop-blur-xl">
+          <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm animate-fade-in" onClick={() => setOpen(false)} />
+          <div className="relative w-full max-w-xl animate-fade-in overflow-hidden rounded-xl border border-slate-200 bg-white/95 shadow-card backdrop-blur-xl">
             {/* Input */}
-            <div className="flex items-center gap-3 border-b border-white/[0.06] px-4">
+            <div className="flex items-center gap-3 border-b border-slate-200 px-4">
               <Search size={18} className="text-slate-500" />
               <input
                 ref={inputRef}
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
                 placeholder="Buscar módulos, trámites, clientes, plantillas o acciones…"
-                className="flex-1 bg-transparent py-4 text-sm text-slate-100 placeholder:text-slate-500 outline-none"
+                className="flex-1 bg-transparent py-4 text-sm text-slate-900 placeholder:text-slate-500 outline-none"
               />
-              <kbd className="rounded border border-white/10 bg-ink-800 px-1.5 py-0.5 text-[10px] text-slate-500">ESC</kbd>
+              <kbd className="rounded border border-slate-200 bg-slate-100 px-1.5 py-0.5 text-[10px] text-slate-500">ESC</kbd>
             </div>
 
             {/* Resultados */}
             <div ref={listRef} className="max-h-[52vh] overflow-y-auto p-2">
               {flat.length === 0 ? (
                 <div className="flex flex-col items-center justify-center gap-2 py-12 text-center">
-                  <Hash size={22} className="text-slate-600" />
-                  <p className="text-sm text-slate-400">Sin coincidencias para “{q}”</p>
-                  <p className="text-xs text-slate-600">Prueba con un nombre, DNI o número de expediente.</p>
+                  <Hash size={22} className="text-slate-400" />
+                  <p className="text-sm text-slate-600">Sin coincidencias para “{q}”</p>
+                  <p className="text-xs text-slate-400">Prueba con un nombre, DNI o número de expediente.</p>
                 </div>
               ) : (
                 grouped.map(([group, items]) => (
                   <div key={group} className="mb-1.5">
-                    <p className="px-2.5 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-slate-600">{group}</p>
+                    <p className="px-2.5 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-slate-400">{group}</p>
                     {items.map((c) => {
                       const idx = flat.indexOf(c);
                       const isActive = idx === active;
@@ -203,16 +203,16 @@ export function CommandPaletteProvider({ children }: { children: React.ReactNode
                           data-idx={idx}
                           onMouseEnter={() => setActive(idx)}
                           onClick={() => { c.run(router); setOpen(false); }}
-                          className={`flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-left transition ${isActive ? "bg-brand-600/20 text-white" : "text-slate-300 hover:bg-white/[0.04]"}`}
+                          className={`flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-left transition ${isActive ? "bg-brand-600/20 text-white" : "text-slate-700 hover:bg-slate-50"}`}
                         >
-                          <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${isActive ? "bg-brand-600 text-white" : "bg-ink-800 text-slate-400"}`}>
+                          <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${isActive ? "bg-brand-600 text-white" : "bg-slate-100 text-slate-600"}`}>
                             <c.icon size={16} />
                           </div>
                           <div className="min-w-0 flex-1">
                             <p className="truncate text-sm font-medium">{c.label}</p>
                             {c.sub && <p className="truncate text-[11px] text-slate-500">{c.sub}</p>}
                           </div>
-                          {isActive && <CornerDownLeft size={14} className="text-brand-300" />}
+                          {isActive && <CornerDownLeft size={14} className="text-brand-700" />}
                         </button>
                       );
                     })}
@@ -222,10 +222,10 @@ export function CommandPaletteProvider({ children }: { children: React.ReactNode
             </div>
 
             {/* Footer */}
-            <div className="flex items-center gap-4 border-t border-white/[0.06] px-4 py-2.5 text-[11px] text-slate-500">
+            <div className="flex items-center gap-4 border-t border-slate-200 px-4 py-2.5 text-[11px] text-slate-500">
               <span className="flex items-center gap-1"><ArrowUp size={11} /><ArrowDown size={11} /> navegar</span>
               <span className="flex items-center gap-1"><CornerDownLeft size={11} /> abrir</span>
-              <span className="ml-auto flex items-center gap-1"><kbd className="rounded border border-white/10 bg-ink-800 px-1 py-0.5">⌘</kbd><kbd className="rounded border border-white/10 bg-ink-800 px-1 py-0.5">K</kbd> abrir/cerrar</span>
+              <span className="ml-auto flex items-center gap-1"><kbd className="rounded border border-slate-200 bg-slate-100 px-1 py-0.5">⌘</kbd><kbd className="rounded border border-slate-200 bg-slate-100 px-1 py-0.5">K</kbd> abrir/cerrar</span>
             </div>
           </div>
         </div>

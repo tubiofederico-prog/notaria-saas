@@ -80,19 +80,19 @@ export default function ContratosPage() {
       {/* Paso 1: seleccionar plantilla */}
       {stage === "select" && (
         <div className="card p-6">
-          <h3 className="mb-1 text-base font-semibold text-white">Selecciona una plantilla</h3>
-          <p className="mb-5 text-sm text-slate-400">El contrato se generará con los datos del expediente vinculado.</p>
+          <h3 className="mb-1 text-base font-semibold text-slate-900">Selecciona una plantilla</h3>
+          <p className="mb-5 text-sm text-slate-600">El contrato se generará con los datos del expediente vinculado.</p>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {PLANTILLAS.map((p) => (
               <button
                 key={p.id}
                 onClick={() => { setPlantilla(p); setStage("form"); }}
-                className="group flex items-center gap-3 rounded-xl border border-white/[0.06] bg-ink-900/40 p-4 text-left transition hover:border-brand-500/40 hover:bg-ink-800"
+                className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white/40 p-4 text-left transition hover:border-brand-500/40 hover:bg-slate-100"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ink-800 text-slate-400 group-hover:bg-brand-600 group-hover:text-white">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-slate-600 group-hover:bg-brand-600 group-hover:text-white">
                   <p.icon size={19} />
                 </div>
-                <span className="text-sm font-medium text-slate-200">{p.nombre}</span>
+                <span className="text-sm font-medium text-slate-800">{p.nombre}</span>
               </button>
             ))}
           </div>
@@ -103,8 +103,8 @@ export default function ContratosPage() {
       {stage === "form" && (
         <div className="card p-6">
           <div className="mb-5 flex items-center gap-2">
-            <plantilla.icon size={18} className="text-brand-400" />
-            <h3 className="text-base font-semibold text-white">{plantilla.nombre}</h3>
+            <plantilla.icon size={18} className="text-brand-600" />
+            <h3 className="text-base font-semibold text-slate-900">{plantilla.nombre}</h3>
             <Badge tone="violet"><Sparkles size={11} /> Datos precargados</Badge>
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -122,7 +122,7 @@ export default function ContratosPage() {
               </div>
             ))}
           </div>
-          <div className="mt-6 flex justify-end gap-2 border-t border-white/[0.06] pt-5">
+          <div className="mt-6 flex justify-end gap-2 border-t border-slate-200 pt-5">
             <button className="btn-outline" onClick={() => setStage("select")}>Atrás</button>
             <button className="btn-primary" onClick={generate}><Sparkles size={16} /> Generar contrato con IA</button>
           </div>
@@ -134,12 +134,12 @@ export default function ContratosPage() {
         <div className="card flex flex-col items-center justify-center py-20">
           <div className="relative mb-5">
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-iris-600 shadow-glow">
-              <Sparkles size={28} className="text-white" />
+              <Sparkles size={28} className="text-slate-900" />
             </div>
             <Loader2 size={84} className="absolute -inset-2.5 animate-spin text-brand-500/30" />
           </div>
-          <p className="text-base font-semibold text-white">Generando contrato con IA…</p>
-          <p className="mt-1 text-sm text-slate-400">Redactando cláusulas y validando datos del expediente</p>
+          <p className="text-base font-semibold text-slate-900">Generando contrato con IA…</p>
+          <p className="mt-1 text-sm text-slate-600">Redactando cláusulas y validando datos del expediente</p>
         </div>
       )}
 
@@ -147,10 +147,10 @@ export default function ContratosPage() {
       {stage === "editor" && (
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
           <div className="card overflow-hidden lg:col-span-3">
-            <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-3.5">
+            <div className="flex items-center justify-between border-b border-slate-200 px-5 py-3.5">
               <div className="flex items-center gap-2">
-                <FileSignature size={16} className="text-brand-400" />
-                <h3 className="text-sm font-semibold text-white">Editor de contrato</h3>
+                <FileSignature size={16} className="text-brand-600" />
+                <h3 className="text-sm font-semibold text-slate-900">Editor de contrato</h3>
                 <Badge tone="emerald"><Check size={11} /> Generado</Badge>
               </div>
               <span className="text-xs text-slate-500">{texto.length} caracteres</span>
@@ -158,30 +158,30 @@ export default function ContratosPage() {
             <textarea
               value={texto}
               onChange={(e) => setTexto(e.target.value)}
-              className="h-[560px] w-full resize-none bg-ink-900/40 p-6 font-mono text-[13px] leading-relaxed text-slate-200 outline-none"
+              className="h-[560px] w-full resize-none bg-white/40 p-6 font-mono text-[13px] leading-relaxed text-slate-800 outline-none"
             />
           </div>
 
           <div className="space-y-4">
             <div className="card p-4">
-              <h4 className="mb-3 text-sm font-semibold text-white">Acciones IA</h4>
+              <h4 className="mb-3 text-sm font-semibold text-slate-900">Acciones IA</h4>
               <div className="space-y-2">
-                <button className="btn-outline w-full justify-start" onClick={() => toast("Cláusula regenerada por IA", "success")}><RefreshCw size={14} className="text-iris-400" /> Regenerar cláusula</button>
-                <button className="btn-outline w-full justify-start" onClick={() => toast("Datos reemplazados desde el expediente", "info")}><Sparkles size={14} className="text-brand-400" /> Reemplazar datos</button>
+                <button className="btn-outline w-full justify-start" onClick={() => toast("Cláusula regenerada por IA", "success")}><RefreshCw size={14} className="text-iris-600" /> Regenerar cláusula</button>
+                <button className="btn-outline w-full justify-start" onClick={() => toast("Datos reemplazados desde el expediente", "info")}><Sparkles size={14} className="text-brand-600" /> Reemplazar datos</button>
               </div>
             </div>
             <div className="card p-4">
-              <h4 className="mb-3 text-sm font-semibold text-white">Documento</h4>
+              <h4 className="mb-3 text-sm font-semibold text-slate-900">Documento</h4>
               <div className="space-y-2">
                 <button className="btn-outline w-full justify-start" onClick={() => toast("Descargando contrato.pdf…", "success")}><Download size={14} /> Descargar PDF</button>
                 <button className="btn-primary w-full justify-start" onClick={() => setSendModal(true)}><Send size={14} /> Enviar a firma</button>
               </div>
             </div>
             <div className="card p-4">
-              <h4 className="mb-3 text-sm font-semibold text-white">Variables detectadas</h4>
+              <h4 className="mb-3 text-sm font-semibold text-slate-900">Variables detectadas</h4>
               <div className="flex flex-wrap gap-1.5">
                 {["{{nombre_comprador}}", "{{dni_comprador}}", "{{nombre_vendedor}}", "{{datos_bien}}", "{{monto}}", "{{fecha}}"].map((v) => (
-                  <span key={v} className="rounded-md bg-ink-800 px-2 py-1 font-mono text-[10px] text-iris-400">{v}</span>
+                  <span key={v} className="rounded-md bg-slate-100 px-2 py-1 font-mono text-[10px] text-iris-600">{v}</span>
                 ))}
               </div>
             </div>
@@ -204,8 +204,8 @@ export default function ContratosPage() {
         <label className="label">Firmantes</label>
         <div className="mb-4 space-y-2">
           {["Roberto Salinas Vega — rsalinas@gmail.com", "AutoMax Perú S.A.C. — legal@automax.pe"].map((f) => (
-            <div key={f} className="flex items-center gap-2 rounded-lg border border-white/[0.06] bg-ink-900/40 px-3 py-2.5 text-sm text-slate-200">
-              <PenLine size={14} className="text-brand-400" /> {f}
+            <div key={f} className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white/40 px-3 py-2.5 text-sm text-slate-800">
+              <PenLine size={14} className="text-brand-600" /> {f}
             </div>
           ))}
         </div>

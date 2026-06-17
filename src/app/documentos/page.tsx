@@ -70,10 +70,10 @@ export default function DocumentosPage() {
         <div className="space-y-4 lg:col-span-2">
           <div
             onClick={() => { setHasDoc(true); runOCR(); }}
-            className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-white/15 bg-ink-900/50 px-6 py-12 text-center transition hover:border-brand-500/40 hover:bg-ink-900/70"
+            className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 px-6 py-12 text-center transition hover:border-brand-400 hover:bg-brand-50"
           >
-            <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-brand-500/10"><Upload size={26} className="text-brand-400" /></div>
-            <p className="text-sm font-medium text-slate-200">Arrastra documentos o haz clic para cargar</p>
+            <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-brand-500/10"><Upload size={26} className="text-brand-600" /></div>
+            <p className="text-sm font-medium text-slate-800">Arrastra documentos o haz clic para cargar</p>
             <p className="mt-1 text-xs text-slate-500">DNI · contratos · escrituras · títulos · poderes · documentos vehiculares</p>
             <button className="btn-primary mt-4"><Upload size={15} /> Seleccionar archivos</button>
           </div>
@@ -83,7 +83,7 @@ export default function DocumentosPage() {
               {/* Pipeline OCR */}
               <div className="card p-5">
                 <div className="mb-5 flex items-center justify-between">
-                  <h3 className="text-sm font-semibold text-white">Proceso de digitalización</h3>
+                  <h3 className="text-sm font-semibold text-slate-900">Proceso de digitalización</h3>
                   <button onClick={runOCR} disabled={processing} className="btn-outline !py-1.5 text-xs">
                     {processing ? <><Loader2 size={13} className="animate-spin" /> Procesando…</> : <><ScanText size={13} /> Re-procesar</>}
                   </button>
@@ -95,12 +95,12 @@ export default function DocumentosPage() {
                     return (
                       <div key={p.key} className="flex items-center gap-3">
                         <div className={`flex h-9 w-9 items-center justify-center rounded-lg border transition ${
-                          done ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400" : current ? "border-brand-400 bg-brand-500/15 text-brand-300" : "border-white/10 bg-ink-800 text-slate-500"
+                          done ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-600" : current ? "border-brand-400 bg-brand-500/15 text-brand-700" : "border-slate-200 bg-slate-100 text-slate-500"
                         }`}>
                           {done ? <Check size={16} /> : processing && current ? <Loader2 size={16} className="animate-spin" /> : <p.icon size={16} />}
                         </div>
                         <div className="flex-1">
-                          <p className={`text-sm ${done || current ? "text-slate-200" : "text-slate-500"}`}>{p.label}</p>
+                          <p className={`text-sm ${done || current ? "text-slate-800" : "text-slate-500"}`}>{p.label}</p>
                         </div>
                         {done && <Badge tone="emerald">Completado</Badge>}
                         {current && processing && <Badge tone="blue">En curso</Badge>}
@@ -113,22 +113,22 @@ export default function DocumentosPage() {
               {/* Preview documental */}
               <div className="card p-5">
                 <div className="mb-3 flex items-center justify-between">
-                  <h3 className="flex items-center gap-2 text-sm font-semibold text-white"><Eye size={15} className="text-brand-400" /> Vista previa</h3>
+                  <h3 className="flex items-center gap-2 text-sm font-semibold text-slate-900"><Eye size={15} className="text-brand-600" /> Vista previa</h3>
                   <span className="text-xs text-slate-500">DNI_RobertoSalinas.pdf · 1 pág</span>
                 </div>
-                <div className="flex aspect-[1.6/1] items-center justify-center rounded-lg border border-white/[0.06] bg-gradient-to-br from-ink-800 to-ink-900">
-                  <div className="w-[80%] rounded-lg border border-white/10 bg-ink-850 p-5 shadow-card">
-                    <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                <div className="flex aspect-[1.6/1] items-center justify-center rounded-lg border border-slate-200 bg-gradient-to-br from-slate-100 to-slate-50">
+                  <div className="w-[80%] rounded-lg border border-slate-200 bg-white p-5 shadow-card">
+                    <div className="flex items-center justify-between border-b border-slate-200 pb-3">
                       <div>
                         <p className="text-[10px] uppercase tracking-wide text-slate-500">República del Perú</p>
-                        <p className="text-sm font-semibold text-slate-200">Documento Nacional de Identidad</p>
+                        <p className="text-sm font-semibold text-slate-800">Documento Nacional de Identidad</p>
                       </div>
-                      <div className="h-12 w-10 rounded bg-ink-700" />
+                      <div className="h-12 w-10 rounded bg-slate-200" />
                     </div>
                     <div className="mt-3 space-y-1.5">
-                      <div className="h-2 w-2/3 rounded bg-ink-700" />
-                      <div className="h-2 w-1/2 rounded bg-ink-700" />
-                      <div className="h-2 w-3/4 rounded bg-ink-700" />
+                      <div className="h-2 w-2/3 rounded bg-slate-200" />
+                      <div className="h-2 w-1/2 rounded bg-slate-200" />
+                      <div className="h-2 w-3/4 rounded bg-slate-200" />
                     </div>
                   </div>
                 </div>
@@ -140,7 +140,7 @@ export default function DocumentosPage() {
         {/* Panel lateral: datos extraídos */}
         <div className="space-y-4">
           <div className="card p-5">
-            <h3 className="mb-1 flex items-center gap-2 text-sm font-semibold text-white"><Sparkles size={15} className="text-iris-400" /> Datos extraídos por IA</h3>
+            <h3 className="mb-1 flex items-center gap-2 text-sm font-semibold text-slate-900"><Sparkles size={15} className="text-iris-600" /> Datos extraídos por IA</h3>
             <p className="mb-4 text-xs text-slate-500">Campos detectados automáticamente del documento.</p>
             <div className="space-y-3">
               {EXTRAIDO.map((d) => (
@@ -150,7 +150,7 @@ export default function DocumentosPage() {
           </div>
 
           <div className="card p-5">
-            <h3 className="mb-4 text-sm font-semibold text-white">Datos del vehículo</h3>
+            <h3 className="mb-4 text-sm font-semibold text-slate-900">Datos del vehículo</h3>
             <div className="space-y-3">
               {VEHICULO.map((d) => (
                 <ExtractRow key={d.campo} {...d} />
@@ -168,14 +168,14 @@ export default function DocumentosPage() {
 }
 
 function ExtractRow({ campo, valor, conf }: { campo: string; valor: string; conf: number }) {
-  const tone = conf >= 95 ? "text-emerald-400" : conf >= 88 ? "text-amber-400" : "text-rose-400";
+  const tone = conf >= 95 ? "text-emerald-600" : conf >= 88 ? "text-amber-600" : "text-rose-600";
   return (
-    <div className="rounded-lg border border-white/[0.06] bg-ink-900/40 p-3">
+    <div className="rounded-lg border border-slate-200 bg-white/40 p-3">
       <div className="flex items-center justify-between">
         <p className="text-[10px] font-medium uppercase tracking-wide text-slate-500">{campo}</p>
         <span className={`text-[10px] font-semibold ${tone}`}>{conf}%</span>
       </div>
-      <p className="mt-1 text-sm text-slate-200">{valor}</p>
+      <p className="mt-1 text-sm text-slate-800">{valor}</p>
     </div>
   );
 }

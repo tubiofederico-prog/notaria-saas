@@ -27,16 +27,16 @@ export default function ClientesPage() {
         {rows.map((c) => (
           <button key={c.id} onClick={() => router.push(`/clientes/${c.id}`)} className="card card-hover p-5 text-left">
             <div className="flex items-start gap-3">
-              <div className={`flex h-11 w-11 items-center justify-center rounded-lg ${c.tipo === "Persona jurídica" ? "bg-iris-500/10 text-iris-400" : "bg-brand-500/10 text-brand-400"}`}>
+              <div className={`flex h-11 w-11 items-center justify-center rounded-lg ${c.tipo === "Persona jurídica" ? "bg-iris-500/10 text-iris-600" : "bg-brand-500/10 text-brand-600"}`}>
                 {c.tipo === "Persona jurídica" ? <Building2 size={20} /> : <User size={20} />}
               </div>
               <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-semibold text-white">{c.nombre}</p>
+                <p className="truncate text-sm font-semibold text-slate-900">{c.nombre}</p>
                 <p className="text-xs text-slate-500">{c.documento}</p>
               </div>
             </div>
-            <div className="mt-4 flex items-center justify-between border-t border-white/[0.06] pt-3">
-              <span className="text-xs text-slate-400">Cliente desde {c.desde}</span>
+            <div className="mt-4 flex items-center justify-between border-t border-slate-200 pt-3">
+              <span className="text-xs text-slate-600">Cliente desde {c.desde}</span>
               {c.tramitesActivos > 0 ? <Badge tone="blue">{c.tramitesActivos} activo(s)</Badge> : <Badge tone="slate">Sin activos</Badge>}
             </div>
           </button>

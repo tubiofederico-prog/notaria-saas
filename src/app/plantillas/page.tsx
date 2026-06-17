@@ -27,9 +27,9 @@ export default function PlantillasPage() {
       />
 
       <div className="flex flex-wrap gap-2">
-        <button onClick={() => setCat("")} className={`chip border ${!cat ? "border-brand-400/40 bg-brand-500/15 text-brand-300" : "border-white/10 text-slate-400 hover:text-slate-200"}`}>Todas</button>
+        <button onClick={() => setCat("")} className={`chip border ${!cat ? "border-brand-400/40 bg-brand-500/15 text-brand-700" : "border-slate-200 text-slate-600 hover:text-slate-800"}`}>Todas</button>
         {CATS.map((c) => (
-          <button key={c} onClick={() => setCat(c)} className={`chip border ${cat === c ? "border-brand-400/40 bg-brand-500/15 text-brand-300" : "border-white/10 text-slate-400 hover:text-slate-200"}`}>{c}</button>
+          <button key={c} onClick={() => setCat(c)} className={`chip border ${cat === c ? "border-brand-400/40 bg-brand-500/15 text-brand-700" : "border-slate-200 text-slate-600 hover:text-slate-800"}`}>{c}</button>
         ))}
       </div>
 
@@ -37,18 +37,18 @@ export default function PlantillasPage() {
         {rows.map((p) => (
           <div key={p.id} className="card card-hover flex flex-col p-5">
             <div className="mb-3 flex items-start justify-between">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-500/10 text-brand-400"><LayoutTemplate size={19} /></div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600"><LayoutTemplate size={19} /></div>
               <Badge tone={p.activa ? "emerald" : "slate"}>{p.activa ? "Activa" : "Inactiva"}</Badge>
             </div>
-            <h3 className="text-sm font-semibold text-white">{p.nombre}</h3>
+            <h3 className="text-sm font-semibold text-slate-900">{p.nombre}</h3>
             <p className="mt-0.5 text-xs text-slate-500">{p.categoria} · {p.usos} usos · {p.actualizada}</p>
             <div className="mt-3 flex flex-wrap gap-1">
               {p.variables.slice(0, 3).map((v) => (
-                <span key={v} className="rounded bg-ink-800 px-1.5 py-0.5 font-mono text-[10px] text-iris-400">{v}</span>
+                <span key={v} className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-iris-600">{v}</span>
               ))}
-              {p.variables.length > 3 && <span className="rounded bg-ink-800 px-1.5 py-0.5 text-[10px] text-slate-500">+{p.variables.length - 3}</span>}
+              {p.variables.length > 3 && <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] text-slate-500">+{p.variables.length - 3}</span>}
             </div>
-            <div className="mt-4 flex gap-2 border-t border-white/[0.06] pt-4">
+            <div className="mt-4 flex gap-2 border-t border-slate-200 pt-4">
               <button className="btn-outline flex-1 !py-1.5 text-xs" onClick={() => setEdit(p)}><Edit3 size={13} /> Editar</button>
               <button className="btn-ghost !px-2" onClick={() => toast("Plantilla duplicada", "success")}><Copy size={14} /></button>
             </div>
@@ -80,11 +80,11 @@ export default function PlantillasPage() {
             </div>
             <div>
               <label className="label">Variables dinámicas</label>
-              <div className="flex flex-wrap gap-1.5 rounded-lg border border-white/[0.06] bg-ink-900/40 p-3">
+              <div className="flex flex-wrap gap-1.5 rounded-lg border border-slate-200 bg-white/40 p-3">
                 {edit.variables.map((v) => (
-                  <span key={v} className="rounded-md bg-ink-800 px-2 py-1 font-mono text-[11px] text-iris-400">{v}</span>
+                  <span key={v} className="rounded-md bg-slate-100 px-2 py-1 font-mono text-[11px] text-iris-600">{v}</span>
                 ))}
-                <button className="rounded-md border border-dashed border-white/15 px-2 py-1 text-[11px] text-slate-500 hover:text-slate-300"><Plus size={11} className="inline" /> variable</button>
+                <button className="rounded-md border border-dashed border-slate-300 px-2 py-1 text-[11px] text-slate-500 hover:text-slate-700"><Plus size={11} className="inline" /> variable</button>
               </div>
             </div>
             <div>

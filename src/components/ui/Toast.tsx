@@ -14,9 +14,9 @@ const ToastCtx = createContext<(msg: string, type?: ToastType) => void>(() => {}
 export const useToast = () => useContext(ToastCtx);
 
 const ICONS = {
-  success: <CheckCircle2 size={18} className="text-emerald-400" />,
-  error: <AlertTriangle size={18} className="text-rose-400" />,
-  info: <Info size={18} className="text-brand-400" />,
+  success: <CheckCircle2 size={18} className="text-emerald-600" />,
+  error: <AlertTriangle size={18} className="text-rose-600" />,
+  info: <Info size={18} className="text-brand-600" />,
 };
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {
@@ -35,13 +35,13 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         {toasts.map((t) => (
           <div
             key={t.id}
-            className="pointer-events-auto flex items-start gap-3 rounded-xl border border-white/10 bg-ink-800/95 px-4 py-3 shadow-card backdrop-blur animate-slide-in"
+            className="pointer-events-auto flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-100/95 px-4 py-3 shadow-card backdrop-blur animate-slide-in"
           >
             <div className="mt-0.5">{ICONS[t.type]}</div>
-            <p className="flex-1 text-sm text-slate-200">{t.msg}</p>
+            <p className="flex-1 text-sm text-slate-800">{t.msg}</p>
             <button
               onClick={() => setToasts((x) => x.filter((y) => y.id !== t.id))}
-              className="text-slate-500 hover:text-slate-300"
+              className="text-slate-500 hover:text-slate-700"
             >
               <X size={15} />
             </button>

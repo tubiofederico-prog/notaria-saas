@@ -19,12 +19,12 @@ import { Modal } from "@/components/ui/Modal";
 import { useToast } from "@/components/ui/Toast";
 
 const CARPETAS = [
-  { id: "f1", nombre: "Compraventa vehículos", docs: 142, color: "text-brand-400" },
-  { id: "f2", nombre: "Compraventa inmuebles", docs: 98, color: "text-iris-400" },
-  { id: "f3", nombre: "Constitución empresas", docs: 67, color: "text-aqua-400" },
-  { id: "f4", nombre: "Legalizaciones", docs: 410, color: "text-emerald-400" },
-  { id: "f5", nombre: "Poderes y cartas", docs: 53, color: "text-amber-400" },
-  { id: "f6", nombre: "Archivados", docs: 1240, color: "text-slate-400" },
+  { id: "f1", nombre: "Compraventa vehículos", docs: 142, color: "text-brand-600" },
+  { id: "f2", nombre: "Compraventa inmuebles", docs: 98, color: "text-iris-600" },
+  { id: "f3", nombre: "Constitución empresas", docs: 67, color: "text-aqua-600" },
+  { id: "f4", nombre: "Legalizaciones", docs: 410, color: "text-emerald-600" },
+  { id: "f5", nombre: "Poderes y cartas", docs: 53, color: "text-amber-600" },
+  { id: "f6", nombre: "Archivados", docs: 1240, color: "text-slate-600" },
 ];
 
 const DOCS = [
@@ -51,13 +51,13 @@ export default function RepositorioPage() {
 
       {/* Carpetas */}
       <div>
-        <h3 className="mb-3 text-sm font-semibold text-white">Carpetas</h3>
+        <h3 className="mb-3 text-sm font-semibold text-slate-900">Carpetas</h3>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {CARPETAS.map((f) => (
             <button key={f.id} className="card card-hover flex flex-col items-start gap-2 p-4 text-left">
               <Folder size={26} className={f.color} />
               <div>
-                <p className="text-sm font-medium text-slate-200">{f.nombre}</p>
+                <p className="text-sm font-medium text-slate-800">{f.nombre}</p>
                 <p className="text-xs text-slate-500">{f.docs} documentos</p>
               </div>
             </button>
@@ -74,9 +74,9 @@ export default function RepositorioPage() {
         <div className="flex gap-2">
           <select className="input sm:w-40"><option>Todos los tipos</option><option>DNI</option><option>Contrato</option><option>Título</option><option>Poder</option></select>
           <select className="input sm:w-36"><option>Todos</option><option>Verificados</option><option>Pendientes</option></select>
-          <div className="flex rounded-lg border border-white/10 p-0.5">
-            <button onClick={() => setView("grid")} className={`rounded px-2 py-1.5 ${view === "grid" ? "bg-brand-600 text-white" : "text-slate-400"}`}><Grid3x3 size={15} /></button>
-            <button onClick={() => setView("list")} className={`rounded px-2 py-1.5 ${view === "list" ? "bg-brand-600 text-white" : "text-slate-400"}`}><List size={15} /></button>
+          <div className="flex rounded-lg border border-slate-200 p-0.5">
+            <button onClick={() => setView("grid")} className={`rounded px-2 py-1.5 ${view === "grid" ? "bg-brand-600 text-white" : "text-slate-600"}`}><Grid3x3 size={15} /></button>
+            <button onClick={() => setView("list")} className={`rounded px-2 py-1.5 ${view === "list" ? "bg-brand-600 text-white" : "text-slate-600"}`}><List size={15} /></button>
           </div>
         </div>
       </div>
@@ -87,13 +87,13 @@ export default function RepositorioPage() {
           {rows.map((d) => (
             <div key={d.id} className="card card-hover p-4">
               <div className="flex items-start justify-between">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-500/10 text-brand-400"><FileText size={19} /></div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600"><FileText size={19} /></div>
                 {d.verificado ? <Badge tone="emerald"><CheckCircle2 size={11} /> Verificado</Badge> : <Badge tone="amber">Pendiente</Badge>}
               </div>
-              <p className="mt-3 truncate text-sm font-medium text-slate-200">{d.nombre}</p>
+              <p className="mt-3 truncate text-sm font-medium text-slate-800">{d.nombre}</p>
               <p className="text-xs text-slate-500">{d.tipo} · {d.cliente}</p>
-              <p className="mt-1 font-mono text-[11px] text-slate-600">{d.exp}</p>
-              <div className="mt-3 flex gap-1.5 border-t border-white/[0.06] pt-3">
+              <p className="mt-1 font-mono text-[11px] text-slate-400">{d.exp}</p>
+              <div className="mt-3 flex gap-1.5 border-t border-slate-200 pt-3">
                 <button onClick={() => setPreview(d)} className="btn-outline flex-1 !py-1.5 text-xs"><Eye size={13} /> Ver</button>
                 <button onClick={() => toast("Descargando…", "success")} className="btn-ghost !px-2"><Download size={14} /></button>
                 <button onClick={() => toast("Documento archivado", "info")} className="btn-ghost !px-2"><Archive size={14} /></button>
@@ -102,12 +102,12 @@ export default function RepositorioPage() {
           ))}
         </div>
       ) : (
-        <div className="card divide-y divide-white/[0.04]">
+        <div className="card divide-y divide-slate-100">
           {rows.map((d) => (
-            <div key={d.id} className="flex items-center gap-3 px-4 py-3 hover:bg-white/[0.03]">
-              <FileText size={18} className="text-brand-400" />
+            <div key={d.id} className="flex items-center gap-3 px-4 py-3 hover:bg-slate-50">
+              <FileText size={18} className="text-brand-600" />
               <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-medium text-slate-200">{d.nombre}</p>
+                <p className="truncate text-sm font-medium text-slate-800">{d.nombre}</p>
                 <p className="text-xs text-slate-500">{d.tipo} · {d.cliente} · {d.exp}</p>
               </div>
               <span className="hidden text-xs text-slate-500 sm:block">{d.fecha}</span>
@@ -133,11 +133,11 @@ export default function RepositorioPage() {
           </>
         }
       >
-        <div className="flex aspect-[1.4/1] items-center justify-center rounded-lg border border-white/[0.06] bg-gradient-to-br from-ink-800 to-ink-900">
-          <div className="w-[70%] space-y-3 rounded-lg border border-white/10 bg-ink-850 p-6 shadow-card">
-            <div className="h-3 w-1/2 rounded bg-ink-700" />
+        <div className="flex aspect-[1.4/1] items-center justify-center rounded-lg border border-slate-200 bg-gradient-to-br from-slate-100 to-slate-50">
+          <div className="w-[70%] space-y-3 rounded-lg border border-slate-200 bg-white p-6 shadow-card">
+            <div className="h-3 w-1/2 rounded bg-slate-200" />
             <div className="space-y-2">
-              {[90, 80, 95, 70, 85, 60].map((w, i) => <div key={i} className="h-2 rounded bg-ink-700" style={{ width: `${w}%` }} />)}
+              {[90, 80, 95, 70, 85, 60].map((w, i) => <div key={i} className="h-2 rounded bg-slate-200" style={{ width: `${w}%` }} />)}
             </div>
           </div>
         </div>

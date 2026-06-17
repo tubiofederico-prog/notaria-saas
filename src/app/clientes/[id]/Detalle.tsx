@@ -43,7 +43,7 @@ export default function ClienteDetalleClient() {
     <div className="space-y-5">
       <div className="flex items-center gap-2">
         <BackButton fallback="/clientes" label="Clientes" />
-        <span className="text-slate-700">/</span>
+        <span className="text-slate-300">/</span>
         <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Clientes", href: "/clientes" }, { label: c.nombre }]} />
       </div>
       <PageHeader
@@ -57,15 +57,15 @@ export default function ClienteDetalleClient() {
         <div className="space-y-4">
           <div className="card p-5">
             <div className="mb-4 flex items-center gap-3">
-              <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${c.tipo === "Persona jurídica" ? "bg-iris-500/10 text-iris-400" : "bg-brand-500/10 text-brand-400"}`}>
+              <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${c.tipo === "Persona jurídica" ? "bg-iris-500/10 text-iris-600" : "bg-brand-500/10 text-brand-600"}`}>
                 {c.tipo === "Persona jurídica" ? <Building2 size={22} /> : <User size={22} />}
               </div>
               <div>
-                <p className="text-sm font-semibold text-white">{c.documento}</p>
+                <p className="text-sm font-semibold text-slate-900">{c.documento}</p>
                 <p className="text-xs text-slate-500">Cliente desde {c.desde}</p>
               </div>
             </div>
-            <div className="space-y-3 border-t border-white/[0.06] pt-4">
+            <div className="space-y-3 border-t border-slate-200 pt-4">
               <Row icon={<Mail size={14} />} text={c.email} />
               <Row icon={<Phone size={14} />} text={c.telefono} />
               <Row icon={<MapPin size={14} />} text={c.direccion} />
@@ -74,9 +74,9 @@ export default function ClienteDetalleClient() {
 
           {/* Código seguimiento */}
           <div className="card p-5">
-            <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold text-white"><Hash size={15} className="text-aqua-400" /> Código de seguimiento</h4>
-            <div className="flex items-center justify-between rounded-lg border border-white/[0.06] bg-ink-900/40 px-3 py-2.5">
-              <span className="font-mono text-base font-semibold text-aqua-400">{c.codigoSeguimiento}</span>
+            <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-900"><Hash size={15} className="text-aqua-600" /> Código de seguimiento</h4>
+            <div className="flex items-center justify-between rounded-lg border border-slate-200 bg-white/40 px-3 py-2.5">
+              <span className="font-mono text-base font-semibold text-aqua-600">{c.codigoSeguimiento}</span>
               <button onClick={() => toast("Código copiado", "success")} className="btn-ghost !px-2"><Copy size={15} /></button>
             </div>
             <p className="mt-2 text-xs text-slate-500">El cliente puede consultar el estado de su trámite con este código.</p>
@@ -84,15 +84,15 @@ export default function ClienteDetalleClient() {
 
           {/* Notificaciones */}
           <div className="card p-5">
-            <h4 className="mb-3 text-sm font-semibold text-white">Notificaciones enviadas</h4>
+            <h4 className="mb-3 text-sm font-semibold text-slate-900">Notificaciones enviadas</h4>
             <div className="space-y-2.5">
               {notificaciones.map((n) => (
                 <div key={n.id} className="flex items-start gap-2.5">
-                  <div className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-ink-800 text-slate-400">
+                  <div className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-slate-100 text-slate-600">
                     {n.canal === "WhatsApp" ? <MessageCircle size={13} /> : <Mail size={13} />}
                   </div>
                   <div className="flex-1">
-                    <p className="text-xs text-slate-200">{n.texto}</p>
+                    <p className="text-xs text-slate-800">{n.texto}</p>
                     <p className="text-[10px] text-slate-500">{n.canal} · {n.fecha} · {n.estado}</p>
                   </div>
                 </div>
@@ -110,16 +110,16 @@ export default function ClienteDetalleClient() {
           </div>
 
           <div className="card">
-            <div className="border-b border-white/[0.06] px-5 py-4"><h3 className="text-sm font-semibold text-white">Trámites asociados</h3></div>
+            <div className="border-b border-slate-200 px-5 py-4"><h3 className="text-sm font-semibold text-slate-900">Trámites asociados</h3></div>
             {tramites.length === 0 ? (
               <div className="p-5"><EmptyState title="Sin trámites" subtitle="Este cliente aún no tiene expedientes registrados." /></div>
             ) : (
-              <div className="divide-y divide-white/[0.04]">
+              <div className="divide-y divide-slate-100">
                 {tramites.map((t) => (
-                  <Link key={t.id} href={`/tramites/${t.id}`} className="flex items-center gap-3 px-5 py-3.5 transition hover:bg-white/[0.03]">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-ink-800 text-slate-400"><FileText size={16} /></div>
+                  <Link key={t.id} href={`/tramites/${t.id}`} className="flex items-center gap-3 px-5 py-3.5 transition hover:bg-slate-50">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-100 text-slate-600"><FileText size={16} /></div>
                     <div className="min-w-0 flex-1">
-                      <p className="truncate text-sm font-medium text-slate-200">{t.tipo}</p>
+                      <p className="truncate text-sm font-medium text-slate-800">{t.tipo}</p>
                       <p className="font-mono text-[11px] text-slate-500">{t.codigo}</p>
                     </div>
                     <StatusBadge estado={t.estado} />
@@ -135,12 +135,12 @@ export default function ClienteDetalleClient() {
 }
 
 function Row({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return <div className="flex items-center gap-2.5 text-sm text-slate-300"><span className="text-slate-500">{icon}</span>{text}</div>;
+  return <div className="flex items-center gap-2.5 text-sm text-slate-700"><span className="text-slate-500">{icon}</span>{text}</div>;
 }
 function Stat({ label, value }: { label: string; value: number }) {
   return (
     <div className="card p-4">
-      <p className="text-2xl font-semibold text-white">{value}</p>
+      <p className="text-2xl font-semibold text-slate-900">{value}</p>
       <p className="mt-0.5 text-xs text-slate-500">{label}</p>
     </div>
   );
